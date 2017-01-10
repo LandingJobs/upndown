@@ -141,7 +141,9 @@ module.exports = class upndown {
 
         text = text
             .replace('\n', ' ')         // converting inner newlines to spaces
-            .replace(/\s+/g, ' ');      // converting sequences of whitespace to single spaces
+            .replace(/\s+/g, ' ')       // converting sequences of whitespace to single spaces
+            .replace(/\*/g, '\\*')      // escape asterisks
+            .replace(/\_/g, '\\_');     // escape underscores
 
         if(
             // if prev node is block, this node is not displayed on the same line, so left-trim
@@ -369,4 +371,4 @@ module.exports = class upndown {
 
         return false;
     }
-}
+};

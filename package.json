@@ -22,7 +22,7 @@
     "eslint": "^3.17.1",
     "mocha": "3.2.0",
     "should": ">= 0.0.1",
-    "uglifyjs": "^2.4.10"
+    "uglify-js": "^2.4.11"
   },
   "main": "./lib/upndown.node.js",
   "scripts": {

@@ -245,6 +245,10 @@
                 "expected": "html/attributes.md"
             },
             {
+                "input": "html/div-url.html",
+                "expected": "html/div-url.md"
+            },
+            {
                 "input": "html/script.html",
                 "expected": "html/script.md"
             },

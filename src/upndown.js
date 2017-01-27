@@ -232,6 +232,8 @@ module.exports = class upndown {
         return bullet + markdown.replace(/^/gm, this.tabindent).trim() + '\n';
     }
 
+    wrap_div(node, markdown) { return markdown + '\n'; }
+
     wrap_p(node, markdown) { return '\n' + markdown + '\n'; }
 
     wrap_br(/*node, markdown*/) { return '  \n'; }

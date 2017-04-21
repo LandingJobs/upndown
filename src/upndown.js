@@ -58,7 +58,9 @@ module.exports = class upndown {
         return new Promise(function(topres, toprej) {
             let promises = [];
             for(let nodekey in nodes) {
-                promises.push(new Promise(function(resolve, reject) { self.walkNode(resolve, reject, options, nodes[nodekey]); }));
+                if (nodes.hasOwnProperty(nodekey)) {
+                    promises.push(new Promise(function(resolve, reject) { self.walkNode(resolve, reject, options, nodes[nodekey]); }));
+                }
             }
 
             Promise.all(promises)
@@ -167,7 +169,9 @@ module.exports = class upndown {
         let htmlattribs = '';
         let attrs = Object.keys(node.attribs);
         for(let attrnamekey in attrs) {
-            htmlattribs += " " + attrs[attrnamekey] + '="' + node.attribs[attrs[attrnamekey]] + '"';
+            if (attrs.hasOwnProperty(attrnamekey)) {
+                htmlattribs += " " + attrs[attrnamekey] + '="' + node.attribs[attrs[attrnamekey]] + '"';
+            }
         }
 
         return '<' + node.name + htmlattribs + '>' + markdown.replace(/\s+/gm, ' ') + '</' + node.name + '>' + (this.isHtmlBlockLevelElement(node.name) ? '\n' : '');
@@ -368,7 +372,9 @@ module.exports = class upndown {
 
     getAttrOrFalse(attr, node) {
         if(attr in node.attribs) {
-            return node.attribs[attr];
+            if (node.attribs.hasOwnProperty(attr)) {
+                return node.attribs[attr];
+            }
         }
 
         return false;

@@ -246,10 +246,19 @@ module.exports = class upndown {
 
     // Inline elements
 
-    wrap_strong(node, markdown) { return '**' + markdown + '**'; }
+    wrap_strong(node, markdown) {
+      var prefix = markdown.match(/^\s*/)[0];
+      var suffix = markdown.match(/\s*$/)[0];
+      return prefix + '**' + markdown.trim() + '**' + suffix;
+    }
     wrap_b(node, markdown) { return this.wrap_strong(node, markdown); }
 
-    wrap_em(node, markdown) { return '*' + markdown + '*'; }
+    wrap_em(node, markdown) {
+      var prefix = markdown.match(/^\s*/)[0];
+      var suffix = markdown.match(/\s*$/)[0];
+      return prefix + '*' + markdown.trim() + '*' + suffix;
+    }
+
     wrap_i(node, markdown) { return this.wrap_em(node, markdown); }
 
     wrap_a(node, markdown) {
